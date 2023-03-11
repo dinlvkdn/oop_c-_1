@@ -1,0 +1,90 @@
+using System;
+
+class Program
+{
+        static void Main(string[] args)
+        {
+            Triangle triangle1 = new Triangle();
+            Triangle triangle = new Triangle(5, 4, 7);
+            Console.WriteLine($"Сторона A={Triangle.GetA}, сторона B={Triangle.GetB}, сторона С={Triangle.GetC} ");
+            triangle.perimeter();
+            triangle.square();
+            Point point = new Point(-2, 1, 1, 5, 12, 1);
+            point.GetMedian();
+        }
+}
+    public class Triangle
+    {
+        private static int a, b, c;
+
+        public static int GetA
+        {
+            get { return a; }
+        }
+        public static int GetB
+        {
+            get { return b; }
+        }
+        public static int GetC
+        {
+            get { return c; }
+        }
+
+        //без параметрів
+        public Triangle()
+        {
+            Console.WriteLine("Трикутник: ");
+        }
+        //параметризований
+        public Triangle(int a, int b, int c)
+        {
+           if (a + b > c && a + c > b && b + c > a)
+           {
+            Triangle.a = a;
+            Triangle.b = b;
+            Triangle.c = c;
+           }
+           else
+           {
+            throw new Exception("Не можна створити трикутник з такими сторонами");
+           }
+        }
+        
+
+        public void square()
+        {
+            double S, p;
+            p = (a + b + c) / 2;
+            S = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+            Console.WriteLine($"Площа {S}");
+        }
+        public void perimeter()
+        {
+            int P;
+            P = a + b + c;
+            Console.WriteLine($"Периметр: {P}");
+        }
+   
+    }
+    public class Point
+    {
+      private int x1, y1, x2, y2, x3, y3;
+             public Point(int x1, int y1, int x2, int y2, int x3, int y3)
+             {
+                   this.x1 = x1;
+                   this.y1 = y1;
+                   this.x2 = x2;
+                   this.y2 = y2;
+                   this.x3 = x3;
+                   this.y3 = y3;
+
+             }
+      public void GetMedian()
+      {
+        double xO = (x1 + x2 + x3) / 3;
+        double yO = (y1 + y2 + y3) / 3;
+        Console.WriteLine($"Точка перетинy медiан: {xO},{yO}");
+
+      }
+
+    }
