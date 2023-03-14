@@ -7,11 +7,12 @@ class Program
             Triangle triangle1 = new Triangle();
             Triangle triangle = new Triangle(5, 4, 7);
             Console.WriteLine($"Сторона A={Triangle.GetA}, сторона B={Triangle.GetB}, сторона С={Triangle.GetC} ");
-            triangle.perimeter();
-            triangle.square();
+
+            Console.WriteLine(triangle.perimeter());
+            Console.WriteLine(triangle.square());
             Point point = new Point(-2, 1, 1, 5, 12, 1);
-            point.GetMedian();
-        }
+            Console.WriteLine(point.GetMedian());
+    }
 }
     public class Triangle
     {
@@ -51,18 +52,20 @@ class Program
         }
         
 
-        public void square()
+        public double square()
         {
             double S, p;
             p = (a + b + c) / 2;
             S = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
-            Console.WriteLine($"Площа {S}");
+        //Console.WriteLine($"Площа {S}");
+        return S;
         }
-        public void perimeter()
+        public double  perimeter()
         {
             int P;
             P = a + b + c;
-            Console.WriteLine($"Периметр: {P}");
+        //Console.WriteLine($"Периметр: {P}");
+        return P;
         }
    
     }
@@ -79,12 +82,12 @@ class Program
                    this.y3 = y3;
 
              }
-      public void GetMedian()
+      public double GetMedian()
       {
         double xO = (x1 + x2 + x3) / 3;
         double yO = (y1 + y2 + y3) / 3;
-        Console.WriteLine($"Точка перетинy медiан: {xO},{yO}");
-
+       // Console.WriteLine($"Точка перетинy медiан: {xO},{yO}");
+       return xO, yO;
       }
 
     }
